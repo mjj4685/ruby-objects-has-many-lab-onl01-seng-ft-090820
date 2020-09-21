@@ -1,24 +1,24 @@
 class Author
-  attr_accessor :title
+  attr_accessor :name
   @@all = []
-  def initialize(title)
-    @title = title
+  def initialize(name)
+    @name = name
     @@all << self
   end
   def self.all
     @@all
   end
   def posts
-    Post.all.select {|post| post.artist == self}
+    Post.all.select {|post| post.author == self}
   end
   def add_post(post)
     post.author = self
   end
-  def add_song_by_title(title)
-    song = Song.new(name)
+  def add_song_by_name(name)
+    song = Post.new(name)
     song.artist = self
   end
-  def self.song_count
+  def self.post_count
     Post.all.count
   end
 end
